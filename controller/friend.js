@@ -61,3 +61,20 @@ exports.deleteData = async (req, res) => {
         })
     }
 }
+exports.editData = async (req, res) => {
+    try {
+        const id = req.params.id
+        const editData = res.FRIEND.findByIdAndUpdate(id)
+        res.status(201).json({
+            status: 'Success',
+            message: 'Data enter success',
+            data: editData
+        })
+
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            message: error.message
+        })
+    }
+}
